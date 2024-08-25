@@ -27,11 +27,14 @@ const [option,setOption]=useState<Record<string,string>[]>([])
            body:JSON.stringify({title,signature,options:option})
            
          })
+         console.log(window.location)
          if(res.ok){
            
            const json=await res.json();
            console.log(json)
            setIsCreated(!isCreated);
+           
+           window.location.href=`${window.location.href}/task/${json?.id}`
           }
           setIsCreating(false)
 

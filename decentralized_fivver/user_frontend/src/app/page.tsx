@@ -6,10 +6,11 @@ import UploadImages from './UploadImages';
 import Upload from './Upload';
 const S3_BUCKET = 'ashutoshadbucket';
 const REGION = 'eu-north-1';
-
+import dotenv from 'dotenv'
+dotenv.config();
 AWS.config.update({
-    accessKeyId: 'AKIAQ3EGURRTTOGI3MJW',
-    secretAccessKey:'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',
+    accessKeyId: process.env.AWS_ACCESS_ID,
+    secretAccessKey:process.env.AWS_SECRET_KEY,
     region: REGION
 });
 
