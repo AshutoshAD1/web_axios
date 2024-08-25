@@ -1,37 +1,3 @@
-<!-- # Setup the project
-
-## You must have a Phantom Wallet with some devnet solana in it
-
-#### cd into backend directory then run npm run dev
-
-#### Then cd into root directory then go to user_frontend directory then run npm run dev to start
-
-### Finally cd into root directory and then go to worker_frontend directory then run npm run dev
-
-
-# Aim of this project
-
-#### This is a data labelling platform where one can upload a bunch of data(like thumbnail for youtube) call them task and pay some amount of sol which goes into the parent wallet 
-
-#### Now the users (let's call them worker) will vote the most appropriate thumbnail and for that they are paid some amount of sol from the amount which was paid by the task creator
-
-#### The worker will have some amount of sols which worker has made by voting some tasks which he can withdraw by clicking withdrawing button.
-
-#### The amount that the worker will withdraw will be taken from the parent wallet
-
-
-
-# Technologies used
-
-1) Express.js for backend
-2) Prisma as a sql database
-3) Nextjs for both user and worker frontend
-4) @solana/web3.js for wallet connection and payments
-5) socket.io for showing vote count in real time
-
- -->
-
-
 ### Backend Setup
 
 • Navigate to the backend directory:
