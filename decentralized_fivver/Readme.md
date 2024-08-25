@@ -1,3 +1,6 @@
+
+
+
 ### Backend Setup
 
 • Navigate to the backend directory:
@@ -25,8 +28,20 @@
 • Start the worker frontend server:
   npm run dev
 
+### Some essential things to do to run this project
+1) create a .env file in backend directory which must contain 
+  • Two JWT SECRETs 
+    1) JWT_SECRET=Your secret here
+    2) JWT_WORKER_SECRET=Your worker secret here 
 
+2) Create an AWS account then create an S3 bucket and then create an IAM user 
+   then put your secrets as :
+   1) AWS_SECRET_KEY=Your secret here
+   2) AWS_ACCESS_ID=Your secret here
 
+3) create a .env file in user_frontend directory which must contain   
+   1) AWS_SECRET_KEY=Your secret here
+   2) AWS_ACCESS_ID=Your secret here
 # Project Aim
 
 This platform allows users to upload data (e.g., YouTube thumbnails) as tasks, for which they pay in SOL (Solana cryptocurrency). Workers on the platform vote on the best submissions and earn SOL for their participation. The SOL used for payments and withdrawals is managed by a parent wallet.
