@@ -37,34 +37,7 @@ const AppBar = () => {
         }
   
        }
-//        const sendAndSign=async ()=>{
-//         const message=new TextEncoder().encode('Signin into Decentralized fivver');
-//         //@ts-ignore
-//   const provider= window.solana;
-//         //@ts-ignore
 
-//   const response=await window.solana.connect();
-//   const publicKey=response.publicKey.toString('hex');
-//  setAddress(publicKey)
-//  localStorage.setItem('phantomAddress',JSON.stringify(publicKey));
-
-//         const signature=await provider.signMessage(message);
-//         console.log(signature)
-//         const res=await fetch(`${BACKEND_URL}/v1/worker/signin`,{
-//           body:JSON.stringify({
-//             address:publicKey,signature
-//           }),
-//           method:"POST",
-//           headers:{
-//             "Content-Type":"application/json"
-//           }
-//         })
-//         const json=await res.json();
-//         localStorage.setItem('token',json.token);
-
-//         setToken(json.token);
-  
-//        }
   
     const pendingAmount=async ()=>{
       try{
