@@ -3,6 +3,7 @@ import { BACKEND_URL } from '@/app/UploadImages'
 import React, { useEffect, useState } from 'react'
 import Image from '../../Image'
 import {io} from 'socket.io-client'
+import AppBar from '@/app/components/AppBar'
 interface TaskDetail {
   option: {
     imageUrl: string;
@@ -99,6 +100,8 @@ const Page = ({ params: { id } }: { params: { id: string } }) => {
   }, [id]);
 
   return (
+    <>
+    <AppBar/>
     <div className='flex justify-center items-center w-full h-[100vh]'>
       {loading ? (
         <p className='font-semibold text-2xl'>Loading...</p>
@@ -119,6 +122,8 @@ const Page = ({ params: { id } }: { params: { id: string } }) => {
         </div>
       )}
     </div>
+    </>
+    
   );
 };
 

@@ -2,11 +2,14 @@
 import {  useState } from "react"
 export const BACKEND_URL='http://localhost:2000'
 const ConnectWallet = () => {
+  const [data,setData]=useState('')
       const [token,setToken]=useState('')
       const [error,setError]=useState<string>('')
       const [address,setAddress]=useState('')
        const sendAndSign=async ()=>{
         const message=new TextEncoder().encode('Signin into Decentralized fivver');
+        // const message=new TextEncoder().encode(data);
+
         if(window.solana){
 
           //@ts-ignore
@@ -35,8 +38,8 @@ const ConnectWallet = () => {
   
             localStorage.setItem('token',json.token);
             setToken(json.token);
-        // window.location.href=('http://localhost:3001/')
-            window.location.href='http://localhost:3001/'
+            // console.log(window.location.)
+            window.location.href=`${window.location.origin}`
           }
          
   
@@ -55,8 +58,10 @@ const ConnectWallet = () => {
         <div className="flex justify-center  items-center w-[100vw] h-[100vh]  text-white">
           {error.length>0?<p className='text-black font-bold text-2xl'>{error}</p>:
           
-          <div className="flex  gap-6 items-center ">
+          <div className="flex-col  gap-6 items-center ">
+            <div> 
           {!(localStorage.getItem('token')??'')?  (<button onClick={sendAndSign} className="bg-red-500 rounded py-1 px-2">Connnect</button>):<p>{JSON.parse(localStorage.getItem('phantomAddress')??'').slice(0,6)}...{JSON.parse(localStorage.getItem('phantomAddress')??'').slice(7,12)}</p>}
+</div>
             
           </div>
           }

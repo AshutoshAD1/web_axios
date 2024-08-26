@@ -1,6 +1,7 @@
 "use client"
 import * as web3 from '@solana/web3.js'
 import { transformSync } from 'next/dist/build/swc'
+import Link from 'next/link'
 import { useEffect, useState } from 'react'
 const AppBar = () => {
   const [address,setAddress]=useState('')
@@ -44,10 +45,10 @@ const AppBar = () => {
   return (
     <div>
       <div className="flex justify-between items-center py-2 px-4 bg-black text-white">
-        <h1 className='font-semibold text-2xl'>For User </h1>
+        <Link href={'/'} className='font-semibold text-2xl'>For User </Link>
         {/* {localStorage.getItem('token')===null?  (<button onClick={connectWallet} className="bg-red-500 rounded py-1 px-2">Connnect</button>): */}
         <div className='flex items-center gap-4'>
-   <p>{(localStorage.getItem('phantomAddress')??'').slice(0,6)}...{(localStorage.getItem('phantomAddress')??'').slice(7,12)}</p>        <button className='px-4 py-1 bg-red-500 rounded-md' onClick={logOut}>LOGOUT</button>
+   <p>{(localStorage.getItem('phantomAddress')??'').slice(1,6)}...{(localStorage.getItem('phantomAddress')??'').slice(7,12)}</p>        <button className='px-4 py-1 bg-red-500 rounded-md' onClick={logOut}>LOGOUT</button>
         </div>
         {balance && <p className='font-semibold text-xl text-white'>Balaance: {balance}</p>}
         {/* <button onClick={transferSol}>TransferSol</button> */}

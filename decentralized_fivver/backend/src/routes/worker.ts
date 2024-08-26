@@ -9,32 +9,53 @@ import { TOTAL_DECIMALS } from '../total_decimal';
 import * as web3 from '@solana/web3.js'
 import bs58 from 'bs58'
 import dotenv from 'dotenv'
+import nacl from 'tweetnacl'
 dotenv.config()
 const prismaClient=new PrismaClient()
 const TOTAL_SUBMISSIONS=100;
 const connection=new web3.Connection(web3.clusterApiUrl('devnet'))
 
 router.post('/signin',async (req:any,res:any)=>{
-  const {address}=req.body;
-  const worker=await prismaClient.worker.upsert(
-    { 
-      
-      where:{address},
-      create:{address:address,pending_amount:0, locked_amount:0},
-      update:{}
-    },
-
-  )
+  const data=new TextEncoder().encode('Signin into Decentralized fivver')
+  const {address,signature}=req.body;
+    // Log the signature and its length
+    console.log('Received signature:', signature);
+    console.log('Signature length:', signature.signature.data.length);
   
-  const token=jwt.sign({
-    workerId:worker.id},`${process.env.JWT_WORKER_SECRET}`,{
-      expiresIn:'3d'
-    })
-    if(token.length>0){
-
-      return   res.status(201).json({token})
+  const verification=nacl.sign.detached.verify(data,
+   new Uint8Array(signature.signature.data),
+    new web3.PublicKey(address).toBytes(),)
+    console.log(verification)
+    if(!verification){
+      return res.status(400).json({msg:"Incorrect sign"})
     }
-    return null
+    try{
+
+      const worker=await prismaClient.worker.upsert(
+        { 
+          
+          where:{address},
+          create:{address:address,pending_amount:0, locked_amount:0},
+          update:{}
+        },
+    
+      )
+      
+      const token=jwt.sign({
+        workerId:worker.id},`${process.env.JWT_WORKER_SECRET}`,{
+          expiresIn:'3d'
+        })
+        if(token.length>0){
+    
+          return   res.status(201).json({token})
+        }
+    }
+
+    catch(e){
+      console.log(e)
+      return res.status(400).json({msg:e})
+
+    }
    
     
 })

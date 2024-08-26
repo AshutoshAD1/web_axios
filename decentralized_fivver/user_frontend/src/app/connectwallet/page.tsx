@@ -8,11 +8,11 @@ const Connect = () => {
   const [error,setError]=useState<string>('')
   const sendAndSign=async ()=>{
     const message=new TextEncoder().encode('Signin into Decentralized fivver');
-     // @ts-ignore
+    // @ts-ignore
     if(window.solana){
+    // @ts-ignore
 
       const provider= window.solana;
-          //@ts-ignore
       
       const response=await window.solana.connect();
       const publicKey=response.publicKey.toString('hex');

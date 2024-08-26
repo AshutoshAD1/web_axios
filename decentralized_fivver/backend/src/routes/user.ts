@@ -30,16 +30,17 @@ const s3Client=new S3Client({
 
 
 router.post('/signin',async (req:any,res:any)=>{
-  const data=new TextEncoder().encode('Signin into Decentralized fivver')
+  const data=new TextEncoder().encode('Signin into Decentralized fivverr')
   const {address,signature}=req.body;
     // Log the signature and its length
     console.log('Received signature:', signature);
     console.log('Signature length:', signature.signature.data.length);
   
-  const verification=await nacl.sign.detached.verify(data,
+  const verification=nacl.sign.detached.verify(data,
    new Uint8Array(signature.signature.data),
     new web3.PublicKey(address).toBytes(),)
     console.log(verification)
+    console.log("ashutosh")
     if(!verification){
       return res.status(411).json({msg:"Incorrect sign"})
     }

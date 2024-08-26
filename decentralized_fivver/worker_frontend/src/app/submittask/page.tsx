@@ -118,7 +118,7 @@ const Submittask = () => {
           <p>{submit?'Submitting':null}</p>
         <div className="flex w-full justify-center items-center gap-2">
         {task && task.task.options.map((option) => (
-        <img className="w-40 h-40"
+        <img className="w-40 h-40 cursor-pointer"
           key={option.id} 
           src={option.url} 
           onClick={() => submittask(option.id)} 
