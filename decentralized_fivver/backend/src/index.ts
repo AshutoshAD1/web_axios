@@ -3,11 +3,13 @@ const app=epxress();
 const cors=require('cors')
 const aws=require('aws-sdk')
 import http from 'http'
-import { Socket } from 'socket.io';
+import dotenv from 'dotenv'
 
+import { Socket } from 'socket.io';
 const {userRouter}=require('./routes/user')
 const {wrokerRouter}=require('./routes/worker')
 app.use(cors());
+dotenv.config();
 app.use(epxress.json())
 const sockets=require('socket.io')
 const server=http.createServer(app)
@@ -49,6 +51,8 @@ aws.config.update({
 const myBucket = new aws.S3({
     params: {Bucket:S3_BUCKET}
 });
+
+
 
 
 app.use('/v1/user',userRouter);

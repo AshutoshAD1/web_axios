@@ -97,8 +97,8 @@ setMakingPayment(false)
 <input type="text" className="border-solid rounded shadow py-2 px-1 " placeholder="Enter the title "  onChange={e=>setTitle(e.target.value)}/>
 </div>
       <div className="flex gap-2 w-full justify-center items-center"> 
-      {option.map(option=>(
-        <UploadImages onImageAdded={(imageUrl:string)=>setOption(prev=>[...prev,{imageUrl}])} image={option.imageUrl}/>
+      {option.map((option,idx)=>(
+        <UploadImages key={idx} onImageAdded={(imageUrl:string)=>setOption(prev=>[...prev,{imageUrl}])} image={option.imageUrl}/>
       ))}
       </div>
       <div className="flex justify-center w-full ">

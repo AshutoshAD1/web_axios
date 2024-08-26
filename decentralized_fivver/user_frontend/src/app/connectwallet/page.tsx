@@ -13,11 +13,11 @@ const Connect = () => {
     // @ts-ignore
 
       const provider= window.solana;
-      
+      // @ts-ignore
       const response=await window.solana.connect();
       const publicKey=response.publicKey.toString('hex');
       setAddress(publicKey)
-      localStorage.setItem('phantomAddress',JSON.stringify(publicKey));
+      window.localStorage.setItem('phantomAddress',JSON.stringify(publicKey));
       
           const signature=await provider.signMessage(message);
           console.log(signature)
@@ -34,7 +34,7 @@ const Connect = () => {
           console.log(json)
           if(json!=null){
       
-            localStorage.setItem('token',json.token);
+            window.localStorage.setItem('token',json.token);
             setToken(json.token);
         // window.location.href=('http://localhost:3001/')
             window.location.href='http://localhost:3000/'
@@ -57,7 +57,7 @@ const Connect = () => {
       {error.length>0?<p className='text-black font-bold text-2xl'>{error}</p>:
       
       <div className="flex  gap-6 items-center ">
-      {!(localStorage.getItem('token')??'')?  (<button onClick={sendAndSign} className="bg-red-500 rounded py-1 px-2">Connnect</button>):<p>{JSON.parse(localStorage.getItem('phantomAddress')??'').slice(0,6)}Ashutosh{JSON.parse(localStorage.getItem('phantomAddress')??'').slice(7,12)}</p>}
+      {!(window.localStorage.getItem('token')??'')?  (<button onClick={sendAndSign} className="bg-red-500 rounded py-1 px-2">Connnect</button>):<p>{JSON.parse(window.localStorage.getItem('phantomAddress')??'').slice(0,6)}Ashutosh{JSON.parse(window.localStorage.getItem('phantomAddress')??'').slice(7,12)}</p>}
         
       </div>
       }

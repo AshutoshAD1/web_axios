@@ -43,7 +43,7 @@ const Page = ({ params: { id } }: { params: { id: string } }) => {
       console.log(json)
       socket.emit('join-room',Number(id));
       return json;
-    } catch (error:{error:{message:string}}) {
+    } catch (error:any) {
       throw new Error(`Fetching task failed: ${error.message}`);
     }
   };

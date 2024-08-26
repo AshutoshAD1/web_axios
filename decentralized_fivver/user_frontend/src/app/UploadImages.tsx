@@ -70,12 +70,19 @@ const UploadImages = ({onImageAdded,image}:{onImageAdded:(imageUrl:string)=>void
   return (
 
     <div className="w-40 m-2 h-40 cursor-pointer  rounded-xl border-solid border-black shadow   ">
-      
-      <div className="flex flex-col w-full items-center justify-center h-full text-2xl" onClick={()=>refrence.current.click()}>
+      <div className="flex flex-col w-full items-center justify-center h-full text-2xl" onClick={()=>{
+        // @ts-ignore
+        refrence.current.click()
+        
+
+        }}>
         <input type="file" onChange={e=>{
-          
+          //@ts-ignore
       setFiles(e.target.files[0])
-        }} ref={refrence} hidden/>
+        }}  
+        
+        //@ts-ignore
+        ref={refrence} hidden/>
         <p >Upload</p>
         <p >+</p>
 

@@ -94,7 +94,6 @@ const AppBar = () => {
         <Link href={'/'}>For Worker </Link>
         <div className="flex  gap-6 items-center ">
         {/* <button onClick={transferSol}>TransferSol</button> */}
-        <Link href={'submittask'}>Submit</Link>
         <p>Pending Amount: {amount}</p>
         <Withdraw/>
         {localStorage.getItem('token')?
